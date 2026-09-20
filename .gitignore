@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Dataset files (LLVIP — not included in this repo)
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.tif
+*.tiff
+*.xml
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Secrets/local configuration
+.env
+*.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# ML model/generated files
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.weights
+*.h5
+*.pb
+*.safe
+
+# Testing
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Temporary files
+*.tmp
+*.temp
+~$*

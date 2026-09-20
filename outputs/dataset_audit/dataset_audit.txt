@@ -1,0 +1,69 @@
+============================================================
+LLVIP DATASET AUDIT REPORT
+============================================================
+Dataset root: <LLVIP_DATASET_ROOT>
+Timestamp: 2026-09-20 10:29:48
+
+
+--- File Count Verification ---
+  RGB images: 15488 (train=12025, test=3463)
+  Thermal images: 15488 (train=12025, test=3463)
+  Annotations: 15488
+
+--- RGB/Thermal Pairing Verification ---
+  Valid pairs (total): 15488
+  Valid pairs (train): 12025
+  Valid pairs (test): 3463
+  Missing thermal: 0
+  Missing RGB: 0
+  Missing annotations: 0
+  Duplicate pairs: 0
+
+--- Image Properties ---
+  RGB dimensions: {(1280, 1024)}
+  Thermal dimensions: {(1280, 1024)}
+  RGB formats: {'JPEG': 1000}
+  Thermal formats: {'JPEG': 1000}
+
+--- Corrupt Image Check (Full Scan) ---
+  Checked 5000 images... (0 corrupt)
+  Checked 10000 images... (0 corrupt)
+  Total checked: 30976
+  Corrupt: 0
+
+--- Annotation Analysis ---
+  Format types: {'.xml': 15488}
+  Orphan annotations: 0
+  Empty annotations: 2
+  Classes: {'person': 42437}
+  Sample empty: ['100030', '100033']
+
+--- Bounding Box Validation ---
+  Sample size: 3000
+  Invalid bboxes: 2
+  Out-of-bounds bboxes: 0
+  Invalid examples: [{'file': '<LLVIP_DATASET_ROOT>/Annotations/020118.xml', 'bbox': [1025, 249, 1025, 250], 'reason': 'xmin >= xmax or ymin >= ymax'}, {'file': '<LLVIP_DATASET_ROOT>/Annotations/020236.xml', 'bbox': [1103, 325, 1103, 326], 'reason': 'xmin >= xmax or ymin >= ymax'}]
+
+--- Train/Test Integrity ---
+  RGB train stems: 12025
+  RGB test stems: 3463
+  RGB train/test overlap: 0
+  Thermal train stems: 12025
+  Thermal test stems: 3463
+  Thermal train/test overlap: 0
+  RGB-Thermal overlap (train): 12025
+  RGB-Thermal overlap (test): 3463
+
+--- Class Distribution ---
+  Classes: {'person': 42437}
+  Total objects: 42437
+
+============================================================
+AUDIT SUMMARY
+============================================================
+  total_checks: 35
+  passed: 31
+  failed: 1
+  warnings: 1
+  info: 2
+  results: {'RGB image count (train)': {'status': 'PASS', 'value': 12025}, 'RGB image count (test)': {'status': 'PASS', 'value': 3463}, 'RGB image count (total)': {'status': 'PASS', 'value': 15488}, 'Thermal image count (train)': {'status': 'PASS', 'value': 12025}, 'Thermal image count (test)': {'status': 'PASS', 'value': 3463}, 'Thermal image count (total)': {'status': 'PASS', 'value': 15488}, 'Annotation count': {'status': 'PASS', 'value': 15488}, 'Valid RGB-Thermal pairs (total)': {'status': 'PASS', 'value': 15488}, 'Valid RGB-Thermal pairs (train)': {'status': 'PASS', 'value': 12025}, 'Valid RGB-Thermal pairs (test)': {'status': 'PASS', 'value': 3463}, 'Missing thermal images': {'status': 'PASS', 'value': 0}, 'Missing RGB images': {'status': 'PASS', 'value': 0}, 'Missing annotations (overall)': {'status': 'PASS', 'value': 0}, 'Duplicate RGB files': {'status': 'PASS', 'value': 0}, 'Duplicate thermal files': {'status': 'PASS', 'value': 0}, 'Duplicate RGB-thermal pairs': {'status': 'PASS', 'value': 0}, 'Corrupt/unreadable images (sampled)': {'status': 'PASS', 'value': 0}, 'RGB dimensions consistent': {'status': 'PASS', 'value': '{(1280, 1024)}'}, 'Thermal dimensions consistent': {'status': 'PASS', 'value': '{(1280, 1024)}'}, 'RGB image format': {'status': 'PASS', 'value': {'JPEG': 1000}}, 'Thermal image format': {'status': 'PASS', 'value': {'JPEG': 1000}}, 'Corrupt images (full scan)': {'status': 'PASS', 'value': 0}, 'Annotation format': {'status': 'PASS', 'value': {'.xml': 15488}}, 'Annotations without corresponding image': {'status': 'PASS', 'value': 0}, 'Empty annotations (no objects)': {'status': 'WARN', 'value': 2}, 'Annotation class labels': {'status': 'INFO', 'value': {'person': 42437}}, 'Invalid bounding boxes (xmin>=xmax or ymin>=ymax)': {'status': 'FAIL', 'value': 2}, 'Bounding boxes outside image boundaries': {'status': 'PASS', 'value': 0}, 'RGB-Thermal correspondence (train)': {'status': 'PASS', 'value': '12025/12025'}, 'RGB-Thermal correspondence (test)': {'status': 'PASS', 'value': '3463/3463'}, 'Train/test filename overlap (RGB)': {'status': 'PASS', 'value': 0}, 'Train/test filename overlap (Thermal)': {'status': 'PASS', 'value': 0}, 'Missing thermal in train': {'status': 'PASS', 'value': 0}, 'Missing thermal in test': {'status': 'PASS', 'value': 0}, 'Annotation class distribution': {'status': 'INFO', 'value': {'person': 42437}}}

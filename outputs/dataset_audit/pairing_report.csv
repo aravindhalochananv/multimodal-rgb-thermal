@@ -1,0 +1,10 @@
+check,count,status,details
+total_rgb,15488,,
+total_thermal,15488,,
+total_annotations,15488,,
+valid_pairs,15488,,
+missing_thermal,0,,
+missing_rgb,0,,
+missing_annotations,0,,
+duplicate_pairs,0,,
+orphan_annotations,0,,
