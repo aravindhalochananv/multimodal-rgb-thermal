@@ -332,6 +332,84 @@ The RGB-only baseline experiment has been completed.
 | `outputs/rgb/yolov8n/train/weights/last.pt` | Final model weights |
 | `outputs/rgb/predictions/` | Qualitative predictions (10 test images) |
 
+## Thermal-Only Baseline (Phase 4B)
+
+The thermal-only baseline experiment has been completed.
+
+### Model
+
+| Parameter | Value |
+|---|---|
+| Model variant | YOLOv8n |
+| Pretrained | Yes (COCO pretrained yolov8n.pt) |
+| Input image size | 320×320 |
+| Batch size | 4 |
+| Device | CPU |
+| Seed | 42 |
+
+### Training Configuration
+
+| Parameter | Value |
+|---|---|
+| Epochs | 2 |
+| Training time | 1.75 hours |
+| Optimizer | AdamW (default) |
+| Learning rate | 0.01 (lr0) |
+
+### Preprocessing
+
+Thermal images are stored as 3-channel JPEG files where all three channels are identical (effectively grayscale data encoded as RGB). No channel conversion was needed — YOLOv8n accepts 3-channel input and the images are already in that format. No RGB information was introduced.
+
+### Dataset Split (Thermal only)
+
+| Split | Count |
+|---|---|
+| Train | 11,523 |
+| Validation | 500 |
+| Test | 3,463 |
+| Total annotations | 15,488 |
+| Converted (train+val) | 12,023 |
+| Converted (test) | 3,463 |
+| Skipped (empty annotations) | 2 |
+| Skipped (invalid bbox) | 5 |
+| Classes | 1 (person) |
+
+### Test Set Metrics
+
+| Metric | Value |
+|---|---|
+| Precision | 0.913 |
+| Recall | 0.774 |
+| F1-score | 0.837 |
+| mAP@50 | 0.803 |
+| mAP@50:95 | 0.480 |
+| Inference time (avg) | 47.44 ms/image |
+
+### Results Location
+
+| File | Description |
+|---|---|
+| `outputs/thermal/thermal_results.json` | Structured experiment results |
+| `outputs/thermal/thermal_results.csv` | CSV results |
+| `outputs/thermal/yolov8n/test_results.json` | Detailed evaluation metrics |
+| `outputs/thermal/yolov8n/test_results.csv` | Detailed evaluation CSV |
+| `outputs/thermal/yolov8n/train/results.csv` | Per-epoch training metrics |
+| `outputs/thermal/yolov8n/train/weights/best.pt` | Best model weights |
+| `outputs/thermal/predictions/` | Qualitative predictions (10 test images) |
+
+### Comparison with RGB-only (descriptive only)
+
+| Metric | RGB-only | Thermal-only | Delta |
+|---|---|---|---|
+| Precision | 0.873 | 0.913 | +0.040 |
+| Recall | 0.703 | 0.774 | +0.071 |
+| F1-score | 0.779 | 0.837 | +0.059 |
+| mAP@50 | 0.684 | 0.803 | +0.118 |
+| mAP@50:95 | 0.338 | 0.480 | +0.141 |
+| Inference time (ms) | 50.95 | 47.44 | -3.51 |
+
+**Note**: Comparison is descriptive only. No conclusion about modality superiority is drawn.
+
 ## Dataset Audit Results (Phase 3)
 
 The dataset audit has been completed. Results are in `outputs/dataset_audit/`:
@@ -350,8 +428,8 @@ The dataset audit has been completed. Results are in `outputs/dataset_audit/`:
 1. **Phase 1** — Environment and project structure ✅
 2. **Phase 2** — LLVIP dataset setup and organization ✅
 3. **Phase 3** — Dataset audit and RGB/thermal pairing verification ✅
-4. **Phase 4** — RGB-only baseline (Phase 4A complete; training interrupted at 2 epochs due to CPU constraints)
-5. **Phase 5** — Thermal-only baseline
+4. **Phase 4** — RGB-only baseline (Phase 4A & 4B complete; training interrupted at 2 epochs due to CPU constraints)
+5. **Phase 5** — Thermal-only baseline (Phase 4B complete)
 6. **Phase 6** — RGB + thermal multimodal fusion
 7. **Phase 7** — Evaluation
 8. **Phase 8** — Comparative analysis and visualization

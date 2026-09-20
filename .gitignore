@@ -55,6 +55,9 @@ Thumbs.db
 # Ultralytics cache files
 **/*.cache
 
+# YOLOv8 runs directory (generated training artifacts)
+runs/
+
 # Testing
 .pytest_cache/
 .mypy_cache/
