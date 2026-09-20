@@ -209,6 +209,65 @@ python run_audit.py
 
 Or open `notebooks/dataset_audit.ipynb` in Jupyter Lab/Notebook.
 
+### 7. Train Models (Phase 4+)
+
+#### Single-Modality Training
+
+```bash
+# RGB-only baseline
+python -m src.training.train_rgb --epochs 100 --batch-size 8 --img-size 640
+
+# Thermal-only baseline
+python -m src.training.train_thermal --epochs 100 --batch-size 8 --img-size 640
+```
+
+#### Generic Training (more control)
+
+```bash
+python -m src.training.train_yolo \
+  --modality rgb \
+  --model yolov8n \
+  --epochs 100 \
+  --batch-size 8 \
+  --img-size 640
+```
+
+Options: `--modality` (rgb/thermal), `--model` (yolov8n/yolov8s), `--epochs`, `--batch-size`, `--img-size`, `--patience`, `--force-rebuild`.
+
+### 8. Evaluate Models (Phase 7)
+
+```bash
+# Evaluate all experiments and create comparison
+python -m src.evaluation.compare
+```
+
+Individual evaluation:
+```python
+from src.evaluation.evaluate_yolo import evaluate
+results = evaluate(modality="rgb", model_name="yolov8n")
+```
+
+Results are saved per experiment as `outputs/{rgb,thermal}/{model_name}/test_results.json` and `test_results.csv`.
+
+### 9. Compare Experiments (Phase 8)
+
+```bash
+python -m src.evaluation.compare
+```
+
+Outputs:
+- `outputs/comparison/comparison.csv` — Metrics table
+- `outputs/comparison/comparison.json` — Raw results
+- `outputs/comparison/comparison.txt` — Summary report
+
+### 10. Run Inference/Demo (Phase 9)
+
+```python
+from ultralytics import YOLO
+model = YOLO("outputs/rgb/yolov8n/train/weights/best.pt")
+results = model.predict("path/to/image.jpg")
+```
+
 ## Dataset Audit Results (Phase 3)
 
 The dataset audit has been completed. Results are in `outputs/dataset_audit/`:

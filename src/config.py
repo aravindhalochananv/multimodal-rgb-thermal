@@ -148,6 +148,3 @@ SEED = 42
 # ---------------------------------------------------------------------------
 DEVICE = "cuda" if False else "cpu"
 
-
-class ConfigurationError(Exception):
-    pass
