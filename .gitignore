@@ -49,6 +49,12 @@ Thumbs.db
 *.pb
 *.safe
 
+# YOLO dataset labels (generated, part of processed dataset)
+**/yolo_dataset/**/*.txt
+
+# Ultralytics cache files
+**/*.cache
+
 # Testing
 .pytest_cache/
 .mypy_cache/

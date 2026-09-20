@@ -49,7 +49,7 @@ def evaluate(modality: str, model_name: str, img_size: int = 640, batch_size: in
     model = YOLO(str(model_path))
 
     results = model.val(
-        data=str(output_base / "data.yaml"),
+        data=str(output_base / "yolo_dataset" / "data.yaml"),
         split="test",
         imgsz=img_size,
         batch=batch_size,

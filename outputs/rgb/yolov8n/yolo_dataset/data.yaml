@@ -1,0 +1,7 @@
+path: C:\Users\smallcase\multimodal-rgb-thermal\outputs\rgb\yolov8n\yolo_dataset
+train: images/train
+val: images/val
+test: images/test
+
+nc: 1
+names: ['person']

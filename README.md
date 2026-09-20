@@ -237,7 +237,7 @@ Options: `--modality` (rgb/thermal), `--model` (yolov8n/yolov8s), `--epochs`, `-
 ### 8. Evaluate Models (Phase 7)
 
 ```bash
-# Evaluate all experiments and create comparison
+# Evaluate the RGB baseline model
 python -m src.evaluation.compare
 ```
 
@@ -268,6 +268,70 @@ model = YOLO("outputs/rgb/yolov8n/train/weights/best.pt")
 results = model.predict("path/to/image.jpg")
 ```
 
+## RGB-Only Baseline (Phase 4A)
+
+The RGB-only baseline experiment has been completed.
+
+### Model
+
+| Parameter | Value |
+|---|---|
+| Model variant | YOLOv8n |
+| Pretrained | Yes (COCO pretrained yolov8n.pt) |
+| Input image size | 320×320 |
+| Batch size | 4 |
+| Device | CPU |
+| Seed | 42 |
+
+### Training Configuration
+
+| Parameter | Value |
+|---|---|
+| Epochs (planned) | 50 |
+| Epochs (completed) | 2 |
+| Training time per epoch | ~71-107 min |
+| Total training time | ~2 hours (interrupted by CPU time constraints) |
+| Optimizer | AdamW (default) |
+| Learning rate | 0.01 (lr0) |
+
+### Dataset Split (RGB only)
+
+| Split | Count |
+|---|---|
+| Train | 11,523 |
+| Validation | 500 |
+| Test | 3,463 |
+| Total annotations | 15,488 |
+| Converted (train+val) | 12,023 |
+| Converted (test) | 3,463 |
+| Skipped (empty annotations) | 2 |
+| Skipped (invalid bbox) | 5 |
+| Classes | 1 (person) |
+
+### Test Set Metrics
+
+| Metric | Value |
+|---|---|
+| Precision | 0.873 |
+| Recall | 0.703 |
+| F1-score | 0.779 |
+| mAP@50 | 0.684 |
+| mAP@50:95 | 0.338 |
+| Inference time (avg) | 50.95 ms/image |
+
+### Results Location
+
+| File | Description |
+|---|---|
+| `outputs/rgb/rgb_results.json` | Structured experiment results |
+| `outputs/rgb/rgb_results.csv` | CSV results |
+| `outputs/rgb/yolov8n/test_results.json` | Detailed evaluation metrics |
+| `outputs/rgb/yolov8n/test_results.csv` | Detailed evaluation CSV |
+| `outputs/rgb/yolov8n/train/results.csv` | Per-epoch training metrics |
+| `outputs/rgb/yolov8n/train/weights/best.pt` | Best model weights |
+| `outputs/rgb/yolov8n/train/weights/last.pt` | Final model weights |
+| `outputs/rgb/predictions/` | Qualitative predictions (10 test images) |
+
 ## Dataset Audit Results (Phase 3)
 
 The dataset audit has been completed. Results are in `outputs/dataset_audit/`:
@@ -286,7 +350,7 @@ The dataset audit has been completed. Results are in `outputs/dataset_audit/`:
 1. **Phase 1** — Environment and project structure ✅
 2. **Phase 2** — LLVIP dataset setup and organization ✅
 3. **Phase 3** — Dataset audit and RGB/thermal pairing verification ✅
-4. **Phase 4** — RGB-only baseline
+4. **Phase 4** — RGB-only baseline (Phase 4A complete; training interrupted at 2 epochs due to CPU constraints)
 5. **Phase 5** — Thermal-only baseline
 6. **Phase 6** — RGB + thermal multimodal fusion
 7. **Phase 7** — Evaluation
