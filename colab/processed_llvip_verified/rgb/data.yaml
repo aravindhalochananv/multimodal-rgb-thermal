@@ -1,0 +1,6 @@
+path: /content/drive/MyDrive/processed_llvip_verified/rgb
+train: images/train
+val: images/val
+test: images/test
+names:
+  0: person

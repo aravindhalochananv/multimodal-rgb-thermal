@@ -1,6 +1,7 @@
 import os, sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
-os.environ['LLVIP_DATASET_ROOT'] = r'C:\Users\smallcase\ml project paper\LLVIP'
+from pathlib import Path
+os.environ.setdefault('LLVIP_DATASET_ROOT', str(Path(__file__).resolve().parents[1] / 'data' / 'LLVIP'))
 from src.config import OUTPUT_THERMAL
 from src.training.train_yolo import run
 

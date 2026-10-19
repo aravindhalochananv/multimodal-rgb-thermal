@@ -68,3 +68,6 @@ htmlcov/
 *.tmp
 *.temp
 ~$*
+
+# JavaScript dependencies
+node_modules/

@@ -35,10 +35,32 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 # ---------------------------------------------------------------------------
 # LLVIP Dataset path
-# MUST be provided via LLVIP_DATASET_ROOT environment variable.
+# Load a project-local .env file automatically, then fall back to the
+# environment variable. This makes the repo work out of the box on local
+# machines without requiring every run to export variables manually.
 # ---------------------------------------------------------------------------
+def _load_project_env() -> None:
+    env_path = PROJECT_ROOT / ".env"
+    if not env_path.exists():
+        return
+
+    for raw_line in env_path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+
+        key, value = [part.strip() for part in line.split("=", 1)]
+        if not key or key in os.environ:
+            continue
+
+        normalized = value.strip().strip('"\'')
+        os.environ[key] = normalized
+
+
+_load_project_env()
+
 _llvip_path = os.environ.get("LLVIP_DATASET_ROOT")
-if not _llvip_path:
+if not _llvip_path or _llvip_path.strip("/\\") == "path/to/LLVIP":
     raise ConfigurationError(
         "\n\n"
         "╔══════════════════════════════════════════════════════════════════╗\n"
@@ -56,7 +78,7 @@ if not _llvip_path:
         "║  See .env.example for the expected format.                       ║\n"
         "╚══════════════════════════════════════════════════════════════════╝\n\n"
     )
-DATASET_ROOT = Path(_llvip_path)
+DATASET_ROOT = Path(_llvip_path).expanduser().resolve()
 
 # RGB / Visible images
 DATA_VISIBLE_ROOT = DATASET_ROOT / "visible"

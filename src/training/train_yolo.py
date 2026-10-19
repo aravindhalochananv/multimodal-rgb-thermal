@@ -8,12 +8,12 @@ import argparse
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from src.config import (
     DATA_VISIBLE_TRAIN, DATA_VISIBLE_TEST,
     DATA_INFRARED_TRAIN, DATA_INFRARED_TEST,
     DATA_ANNOTATIONS,
-    OUTPUT_RGB, OUTPUT_THERMAL,
+    OUTPUT_RGB, OUTPUT_THERMAL, OUTPUT_MULTIMODAL,
     SEED,
 )
 from src.data.voc_to_yolo import convert_dataset, create_yaml, verify_conversion
@@ -35,10 +35,15 @@ def run(
         img_dir_train = DATA_VISIBLE_TRAIN
         img_dir_test = DATA_VISIBLE_TEST
         output_base = OUTPUT_RGB / model_name
-    else:
+    elif modality == "thermal":
         img_dir_train = DATA_INFRARED_TRAIN
         img_dir_test = DATA_INFRARED_TEST
         output_base = OUTPUT_THERMAL / model_name
+    else:
+        # Multimodal / Fusion
+        img_dir_train = DATA_VISIBLE_TRAIN
+        img_dir_test = DATA_VISIBLE_TEST
+        output_base = OUTPUT_MULTIMODAL / model_name
 
     yolo_dir = output_base / "yolo_dataset"
     yaml_path = yolo_dir / "data.yaml"
@@ -97,7 +102,7 @@ def run(
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--modality", type=str, required=True, choices=["rgb", "thermal"])
+    parser.add_argument("--modality", type=str, required=True, choices=["rgb", "thermal", "multimodal", "fusion"])
     parser.add_argument("--model", type=str, required=True, choices=["yolov8n", "yolov8s"])
     parser.add_argument("--epochs", type=int, default=3)
     parser.add_argument("--batch-size", type=int, default=4)

@@ -1,6 +1,6 @@
 import os, sys, json
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
-os.environ['LLVIP_DATASET_ROOT'] = r'C:\Users\smallcase\ml project paper\LLVIP'
+os.environ.setdefault('LLVIP_DATASET_ROOT', str(Path(__file__).resolve().parents[1] / 'data' / 'LLVIP'))
 from pathlib import Path
 from src.config import (
     DATA_VISIBLE_TRAIN, DATA_VISIBLE_TEST,

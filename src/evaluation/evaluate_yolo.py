@@ -13,21 +13,28 @@ import time
 from pathlib import Path
 from datetime import datetime
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from src.config import (
     DATA_VISIBLE_TEST, DATA_INFRARED_TEST,
-    OUTPUT_RGB, OUTPUT_THERMAL,
+    OUTPUT_RGB, OUTPUT_THERMAL, OUTPUT_MULTIMODAL,
     SEED,
 )
 from ultralytics import YOLO
 
 
 def get_test_dir(modality: str) -> Path:
-    return DATA_VISIBLE_TEST if modality == "rgb" else DATA_INFRARED_TEST
+    if modality == "thermal":
+        return DATA_INFRARED_TEST
+    return DATA_VISIBLE_TEST
 
 
 def get_output_base(modality: str, model_name: str) -> Path:
-    return (OUTPUT_RGB if modality == "rgb" else OUTPUT_THERMAL) / model_name
+    if modality == "rgb":
+        return OUTPUT_RGB / model_name
+    elif modality == "thermal":
+        return OUTPUT_THERMAL / model_name
+    else:
+        return OUTPUT_MULTIMODAL / model_name
 
 
 def evaluate(modality: str, model_name: str, img_size: int = 640, batch_size: int = 16) -> dict:

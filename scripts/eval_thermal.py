@@ -1,6 +1,6 @@
 import os, sys, json, csv
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
-os.environ['LLVIP_DATASET_ROOT'] = r'C:\Users\smallcase\ml project paper\LLVIP'
+os.environ.setdefault('LLVIP_DATASET_ROOT', str(Path(__file__).resolve().parents[1] / 'data' / 'LLVIP'))
 from pathlib import Path
 from src.config import OUTPUT_THERMAL
 from src.evaluation.evaluate_yolo import evaluate

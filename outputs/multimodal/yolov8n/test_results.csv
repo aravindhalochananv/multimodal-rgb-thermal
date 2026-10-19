@@ -1,0 +1,2 @@
+modality,model,fusion_type,timestamp,precision,recall,f1_score,mAP50,mAP50_95,fitness,avg_per_image_ms,total_ms,samples
+multimodal,yolov8n,50:50 RGB-Thermal Pixel Fusion,2026-10-19T14:11:15.927917,0.9218224679871724,0.8294600095828677,0.8732056454893217,0.9150132211314684,0.5504747646607262,0.5504747646607262,38.19,3819.0,100

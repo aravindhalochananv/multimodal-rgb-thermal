@@ -1,8 +1,8 @@
 ============================================================
 LLVIP DATASET AUDIT REPORT
 ============================================================
-Dataset root: <LLVIP_DATASET_ROOT>
-Timestamp: 2026-09-20 10:29:48
+Dataset root: D:\Masters\MachineLearning\New Project\multimodal-rgb-thermal\data\LLVIP
+Timestamp: 2026-09-21 21:53:39
 
 
 --- File Count Verification ---
@@ -42,7 +42,7 @@ Timestamp: 2026-09-20 10:29:48
   Sample size: 3000
   Invalid bboxes: 2
   Out-of-bounds bboxes: 0
-  Invalid examples: [{'file': '<LLVIP_DATASET_ROOT>/Annotations/020118.xml', 'bbox': [1025, 249, 1025, 250], 'reason': 'xmin >= xmax or ymin >= ymax'}, {'file': '<LLVIP_DATASET_ROOT>/Annotations/020236.xml', 'bbox': [1103, 325, 1103, 326], 'reason': 'xmin >= xmax or ymin >= ymax'}]
+  Invalid examples: [{'file': 'D:\\Masters\\MachineLearning\\New Project\\multimodal-rgb-thermal\\data\\LLVIP\\Annotations\\020118.xml', 'bbox': [1025, 249, 1025, 250], 'reason': 'xmin >= xmax or ymin >= ymax'}, {'file': 'D:\\Masters\\MachineLearning\\New Project\\multimodal-rgb-thermal\\data\\LLVIP\\Annotations\\020236.xml', 'bbox': [1103, 325, 1103, 326], 'reason': 'xmin >= xmax or ymin >= ymax'}]
 
 --- Train/Test Integrity ---
   RGB train stems: 12025

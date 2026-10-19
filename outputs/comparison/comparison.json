@@ -1,0 +1,51 @@
+[
+  {
+    "modality": "rgb",
+    "model": "yolov8n",
+    "timestamp": "2026-10-19T14:11:15.927917",
+    "precision": 0.8904382751786545,
+    "recall": 0.7870392676463502,
+    "f1_score": 0.8355520358271603,
+    "mAP50": 0.8595894843212863,
+    "mAP50_95": 0.4692438122549241,
+    "fitness": 0.4692438122549241,
+    "inference_time": {
+      "avg_per_image_ms": 54.07,
+      "total_ms": 5407.0,
+      "samples": 100
+    }
+  },
+  {
+    "modality": "thermal",
+    "model": "yolov8n",
+    "timestamp": "2026-10-19T14:11:15.927917",
+    "precision": 0.926683948548122,
+    "recall": 0.8418453384726572,
+    "f1_score": 0.8822297352359381,
+    "mAP50": 0.9221802268807098,
+    "mAP50_95": 0.5658120578283447,
+    "fitness": 0.5658120578283447,
+    "inference_time": {
+      "avg_per_image_ms": 52.15,
+      "total_ms": 5215.0,
+      "samples": 100
+    }
+  },
+  {
+    "modality": "multimodal",
+    "model": "yolov8n",
+    "fusion_type": "50:50 RGB-Thermal Pixel Fusion",
+    "timestamp": "2026-10-19T14:11:15.927917",
+    "precision": 0.9218224679871724,
+    "recall": 0.8294600095828677,
+    "f1_score": 0.8732056454893217,
+    "mAP50": 0.9150132211314684,
+    "mAP50_95": 0.5504747646607262,
+    "fitness": 0.5504747646607262,
+    "inference_time": {
+      "avg_per_image_ms": 38.19,
+      "total_ms": 3819.0,
+      "samples": 100
+    }
+  }
+]

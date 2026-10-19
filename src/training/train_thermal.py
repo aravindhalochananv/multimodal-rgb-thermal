@@ -3,7 +3,8 @@
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
+repo_root = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(repo_root))
 from src.training.train_yolo import run
 
 if __name__ == "__main__":

@@ -1,0 +1,17 @@
+{
+  "modality": "multimodal",
+  "model": "yolov8n",
+  "fusion_type": "50:50 RGB-Thermal Pixel Fusion",
+  "timestamp": "2026-10-19T14:11:15.927917",
+  "precision": 0.9218224679871724,
+  "recall": 0.8294600095828677,
+  "f1_score": 0.8732056454893217,
+  "mAP50": 0.9150132211314684,
+  "mAP50_95": 0.5504747646607262,
+  "fitness": 0.5504747646607262,
+  "inference_time": {
+    "avg_per_image_ms": 38.19,
+    "total_ms": 3819.0,
+    "samples": 100
+  }
+}

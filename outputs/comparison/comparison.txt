@@ -1,0 +1,5 @@
+RGB vs Thermal YOLO Experiment Comparison
+============================================================
+{'Modality': 'Rgb', 'Model': 'yolov8n', 'Precision': 0.8904382751786545, 'Recall': 0.7870392676463502, 'F1': 0.8355520358271603, 'mAP@50': 0.8595894843212863, 'mAP@50:95': 0.4692438122549241, 'Inference Time (ms)': '54.07 ms/img'}
+{'Modality': 'Thermal', 'Model': 'yolov8n', 'Precision': 0.926683948548122, 'Recall': 0.8418453384726572, 'F1': 0.8822297352359381, 'mAP@50': 0.9221802268807098, 'mAP@50:95': 0.5658120578283447, 'Inference Time (ms)': '52.15 ms/img'}
+{'Modality': 'Multimodal', 'Model': 'yolov8n', 'Precision': 0.9218224679871724, 'Recall': 0.8294600095828677, 'F1': 0.8732056454893217, 'mAP@50': 0.9150132211314684, 'mAP@50:95': 0.5504747646607262, 'Inference Time (ms)': '38.19 ms/img'}

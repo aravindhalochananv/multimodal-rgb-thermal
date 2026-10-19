@@ -164,133 +164,133 @@
       "status": "PASS",
       "value": 12025,
       "details": "Expected 12025",
-      "timestamp": 1789880389.2418916
+      "timestamp": 1790007819.9592075
     },
     {
       "check_name": "RGB image count (test)",
       "status": "PASS",
       "value": 3463,
       "details": "Expected 3463",
-      "timestamp": 1789880389.2419012
+      "timestamp": 1790007819.9592075
     },
     {
       "check_name": "RGB image count (total)",
       "status": "PASS",
       "value": 15488,
       "details": "Expected 15488",
-      "timestamp": 1789880389.2419033
+      "timestamp": 1790007819.9592075
     },
     {
       "check_name": "Thermal image count (train)",
       "status": "PASS",
       "value": 12025,
       "details": "Expected 12025",
-      "timestamp": 1789880389.2419052
+      "timestamp": 1790007819.9592075
     },
     {
       "check_name": "Thermal image count (test)",
       "status": "PASS",
       "value": 3463,
       "details": "Expected 3463",
-      "timestamp": 1789880389.241907
+      "timestamp": 1790007819.9592075
     },
     {
       "check_name": "Thermal image count (total)",
       "status": "PASS",
       "value": 15488,
       "details": "Expected 15488",
-      "timestamp": 1789880389.2419086
+      "timestamp": 1790007819.9592075
     },
     {
       "check_name": "Annotation count",
       "status": "PASS",
       "value": 15488,
       "details": "Expected 15488",
-      "timestamp": 1789880389.24191
+      "timestamp": 1790007819.9592075
     },
     {
       "check_name": "Valid RGB-Thermal pairs (total)",
       "status": "PASS",
       "value": 15488,
       "details": "Found 15488 paired records total",
-      "timestamp": 1789880392.828609
+      "timestamp": 1790007822.0174732
     },
     {
       "check_name": "Valid RGB-Thermal pairs (train)",
       "status": "PASS",
       "value": 12025,
       "details": "Found 12025 paired records in train",
-      "timestamp": 1789880392.828613
+      "timestamp": 1790007822.0174732
     },
     {
       "check_name": "Valid RGB-Thermal pairs (test)",
       "status": "PASS",
       "value": 3463,
       "details": "Found 3463 paired records in test",
-      "timestamp": 1789880392.8286154
+      "timestamp": 1790007822.0174732
     },
     {
       "check_name": "Missing thermal images",
       "status": "PASS",
       "value": 0,
       "details": "0 RGB images without thermal",
-      "timestamp": 1789880392.828618
+      "timestamp": 1790007822.0174732
     },
     {
       "check_name": "Missing RGB images",
       "status": "PASS",
       "value": 0,
       "details": "0 thermal images without RGB",
-      "timestamp": 1789880392.8286211
+      "timestamp": 1790007822.0174732
     },
     {
       "check_name": "Missing annotations (overall)",
       "status": "PASS",
       "value": 0,
       "details": "0 images without annotations",
-      "timestamp": 1789880392.8286228
+      "timestamp": 1790007822.0174732
     },
     {
       "check_name": "Duplicate RGB files",
       "status": "PASS",
       "value": 0,
       "details": "Check filename uniqueness within modality",
-      "timestamp": 1789880392.8286245
+      "timestamp": 1790007822.0174732
     },
     {
       "check_name": "Duplicate thermal files",
       "status": "PASS",
       "value": 0,
       "details": "Check filename uniqueness within modality",
-      "timestamp": 1789880392.8286257
+      "timestamp": 1790007822.0174732
     },
     {
       "check_name": "Duplicate RGB-thermal pairs",
       "status": "PASS",
       "value": 0,
       "details": "Check for duplicate cross-modal pairs",
-      "timestamp": 1789880392.8286269
+      "timestamp": 1790007822.0174732
     },
     {
       "check_name": "Corrupt/unreadable images (sampled)",
       "status": "PASS",
       "value": 0,
       "details": "No corrupt images found in sample",
-      "timestamp": 1789880394.0868134
+      "timestamp": 1790007823.0974011
     },
     {
       "check_name": "RGB dimensions consistent",
       "status": "PASS",
       "value": "{(1280, 1024)}",
       "details": "Found 1 unique dimensions",
-      "timestamp": 1789880394.0869138
+      "timestamp": 1790007823.0974011
     },
     {
       "check_name": "Thermal dimensions consistent",
       "status": "PASS",
       "value": "{(1280, 1024)}",
       "details": "Found 1 unique dimensions",
-      "timestamp": 1789880394.0869756
+      "timestamp": 1790007823.0974011
     },
     {
       "check_name": "RGB image format",
@@ -299,7 +299,7 @@
         "JPEG": 1000
       },
       "details": "Image formats found in RGB set",
-      "timestamp": 1789880394.08698
+      "timestamp": 1790007823.0974011
     },
     {
       "check_name": "Thermal image format",
@@ -308,14 +308,14 @@
         "JPEG": 1000
       },
       "details": "Image formats found in thermal set",
-      "timestamp": 1789880394.0869813
+      "timestamp": 1790007823.0974011
     },
     {
       "check_name": "Corrupt images (full scan)",
       "status": "PASS",
       "value": 0,
       "details": "Checked 30976 images, 0 corrupt",
-      "timestamp": 1789880401.993592
+      "timestamp": 1790007830.1643934
     },
     {
       "check_name": "Annotation format",
@@ -324,21 +324,21 @@
         ".xml": 15488
       },
       "details": "Annotation formats: {'.xml': 15488}",
-      "timestamp": 1789880406.2214575
+      "timestamp": 1790008017.2199283
     },
     {
       "check_name": "Annotations without corresponding image",
       "status": "PASS",
       "value": 0,
       "details": "0 orphan annotations",
-      "timestamp": 1789880406.2214613
+      "timestamp": 1790008017.2199283
     },
     {
       "check_name": "Empty annotations (no objects)",
       "status": "WARN",
       "value": 2,
       "details": "2 annotations with no objects",
-      "timestamp": 1789880406.2214632
+      "timestamp": 1790008017.2199283
     },
     {
       "check_name": "Annotation class labels",
@@ -347,63 +347,63 @@
         "person": 42437
       },
       "details": "Classes found in annotations",
-      "timestamp": 1789880406.221465
+      "timestamp": 1790008017.2199283
     },
     {
       "check_name": "Invalid bounding boxes (xmin>=xmax or ymin>=ymax)",
       "status": "FAIL",
       "value": 2,
       "details": "Found 2 invalid bboxes in sample of 3000",
-      "timestamp": 1789880407.0886905
+      "timestamp": 1790008017.8844144
     },
     {
       "check_name": "Bounding boxes outside image boundaries",
       "status": "PASS",
       "value": 0,
       "details": "Found 0 out-of-bounds bboxes in sample of 3000",
-      "timestamp": 1789880407.0886936
+      "timestamp": 1790008017.8844144
     },
     {
       "check_name": "RGB-Thermal correspondence (train)",
       "status": "PASS",
       "value": "12025/12025",
       "details": "All RGB have matching thermal in train",
-      "timestamp": 1789880407.7785819
+      "timestamp": 1790008018.2814746
     },
     {
       "check_name": "RGB-Thermal correspondence (test)",
       "status": "PASS",
       "value": "3463/3463",
       "details": "All RGB have matching thermal in test",
-      "timestamp": 1789880407.7785857
+      "timestamp": 1790008018.2814746
     },
     {
       "check_name": "Train/test filename overlap (RGB)",
       "status": "PASS",
       "value": 0,
       "details": "0 overlapping filenames between train and test",
-      "timestamp": 1789880407.7785878
+      "timestamp": 1790008018.2814746
     },
     {
       "check_name": "Train/test filename overlap (Thermal)",
       "status": "PASS",
       "value": 0,
       "details": "0 overlapping filenames between train and test",
-      "timestamp": 1789880407.7785897
+      "timestamp": 1790008018.2814746
     },
     {
       "check_name": "Missing thermal in train",
       "status": "PASS",
       "value": 0,
       "details": "0 RGB without thermal in train",
-      "timestamp": 1789880407.7785914
+      "timestamp": 1790008018.2814746
     },
     {
       "check_name": "Missing thermal in test",
       "status": "PASS",
       "value": 0,
       "details": "0 RGB without thermal in test",
-      "timestamp": 1789880407.7785933
+      "timestamp": 1790008018.2814746
     },
     {
       "check_name": "Annotation class distribution",
@@ -412,15 +412,15 @@
         "person": 42437
       },
       "details": "Object classes in annotations",
-      "timestamp": 1789880410.9623272
+      "timestamp": 1790008020.6842096
     }
   ],
   "audit_log": [
     "============================================================",
     "LLVIP DATASET AUDIT REPORT",
     "============================================================",
-    "Dataset root: <LLVIP_DATASET_ROOT>",
-    "Timestamp: 2026-09-20 10:29:48",
+    "Dataset root: D:\\Masters\\MachineLearning\\New Project\\multimodal-rgb-thermal\\data\\LLVIP",
+    "Timestamp: 2026-09-21 21:53:39",
     "",
     "\n--- File Count Verification ---",
     "  RGB images: 15488 (train=12025, test=3463)",
@@ -454,7 +454,7 @@
     "  Sample size: 3000",
     "  Invalid bboxes: 2",
     "  Out-of-bounds bboxes: 0",
-    "  Invalid examples: [{'file': '<LLVIP_DATASET_ROOT>\\\\LLVIP\\\\Annotations\\\\020118.xml', 'bbox': [1025, 249, 1025, 250], 'reason': 'xmin >= xmax or ymin >= ymax'}, {'file': '<LLVIP_DATASET_ROOT>\\\\LLVIP\\\\Annotations\\\\020236.xml', 'bbox': [1103, 325, 1103, 326], 'reason': 'xmin >= xmax or ymin >= ymax'}]",
+    "  Invalid examples: [{'file': 'D:\\\\Masters\\\\MachineLearning\\\\New Project\\\\multimodal-rgb-thermal\\\\data\\\\LLVIP\\\\Annotations\\\\020118.xml', 'bbox': [1025, 249, 1025, 250], 'reason': 'xmin >= xmax or ymin >= ymax'}, {'file': 'D:\\\\Masters\\\\MachineLearning\\\\New Project\\\\multimodal-rgb-thermal\\\\data\\\\LLVIP\\\\Annotations\\\\020236.xml', 'bbox': [1103, 325, 1103, 326], 'reason': 'xmin >= xmax or ymin >= ymax'}]",
     "\n--- Train/Test Integrity ---",
     "  RGB train stems: 12025",
     "  RGB test stems: 3463",

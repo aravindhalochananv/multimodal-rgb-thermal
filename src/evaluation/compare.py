@@ -8,20 +8,27 @@ import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
-from src.config import OUTPUT_RGB, OUTPUT_THERMAL
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from src.config import OUTPUT_RGB, OUTPUT_THERMAL, OUTPUT_MULTIMODAL
 
 
 def collect_results() -> list:
     """Collect metrics from all experiment result files."""
     experiments = [
-        ("rgb", "yolov8n"), ("rgb", "yolov8s"),
-        ("thermal", "yolov8n"), ("thermal", "yolov8s"),
+        ("rgb", "yolov8n"),
+        ("thermal", "yolov8n"),
+        ("multimodal", "yolov8n"),
     ]
 
     all_results = []
     for modality, model in experiments:
-        base = (OUTPUT_RGB if modality == "rgb" else OUTPUT_THERMAL) / model
+        if modality == "rgb":
+            base = OUTPUT_RGB / model
+        elif modality == "thermal":
+            base = OUTPUT_THERMAL / model
+        else:
+            base = OUTPUT_MULTIMODAL / model
+
         results_file = base / "test_results.json"
         if results_file.exists():
             with open(results_file) as f:

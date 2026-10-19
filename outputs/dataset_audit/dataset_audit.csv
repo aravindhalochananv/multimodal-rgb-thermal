@@ -1,36 +1,36 @@
 check_name,status,value,details,timestamp
-RGB image count (train),PASS,12025,Expected 12025,1789880389.2418916
-RGB image count (test),PASS,3463,Expected 3463,1789880389.2419012
-RGB image count (total),PASS,15488,Expected 15488,1789880389.2419033
-Thermal image count (train),PASS,12025,Expected 12025,1789880389.2419052
-Thermal image count (test),PASS,3463,Expected 3463,1789880389.241907
-Thermal image count (total),PASS,15488,Expected 15488,1789880389.2419086
-Annotation count,PASS,15488,Expected 15488,1789880389.24191
-Valid RGB-Thermal pairs (total),PASS,15488,Found 15488 paired records total,1789880392.828609
-Valid RGB-Thermal pairs (train),PASS,12025,Found 12025 paired records in train,1789880392.828613
-Valid RGB-Thermal pairs (test),PASS,3463,Found 3463 paired records in test,1789880392.8286154
-Missing thermal images,PASS,0,0 RGB images without thermal,1789880392.828618
-Missing RGB images,PASS,0,0 thermal images without RGB,1789880392.8286211
-Missing annotations (overall),PASS,0,0 images without annotations,1789880392.8286228
-Duplicate RGB files,PASS,0,Check filename uniqueness within modality,1789880392.8286245
-Duplicate thermal files,PASS,0,Check filename uniqueness within modality,1789880392.8286257
-Duplicate RGB-thermal pairs,PASS,0,Check for duplicate cross-modal pairs,1789880392.8286269
-Corrupt/unreadable images (sampled),PASS,0,No corrupt images found in sample,1789880394.0868134
-RGB dimensions consistent,PASS,"{(1280, 1024)}",Found 1 unique dimensions,1789880394.0869138
-Thermal dimensions consistent,PASS,"{(1280, 1024)}",Found 1 unique dimensions,1789880394.0869756
-RGB image format,PASS,{'JPEG': 1000},Image formats found in RGB set,1789880394.08698
-Thermal image format,PASS,{'JPEG': 1000},Image formats found in thermal set,1789880394.0869813
-Corrupt images (full scan),PASS,0,"Checked 30976 images, 0 corrupt",1789880401.993592
-Annotation format,PASS,{'.xml': 15488},Annotation formats: {'.xml': 15488},1789880406.2214575
-Annotations without corresponding image,PASS,0,0 orphan annotations,1789880406.2214613
-Empty annotations (no objects),WARN,2,2 annotations with no objects,1789880406.2214632
-Annotation class labels,INFO,{'person': 42437},Classes found in annotations,1789880406.221465
-Invalid bounding boxes (xmin>=xmax or ymin>=ymax),FAIL,2,Found 2 invalid bboxes in sample of 3000,1789880407.0886905
-Bounding boxes outside image boundaries,PASS,0,Found 0 out-of-bounds bboxes in sample of 3000,1789880407.0886936
-RGB-Thermal correspondence (train),PASS,12025/12025,All RGB have matching thermal in train,1789880407.7785819
-RGB-Thermal correspondence (test),PASS,3463/3463,All RGB have matching thermal in test,1789880407.7785857
-Train/test filename overlap (RGB),PASS,0,0 overlapping filenames between train and test,1789880407.7785878
-Train/test filename overlap (Thermal),PASS,0,0 overlapping filenames between train and test,1789880407.7785897
-Missing thermal in train,PASS,0,0 RGB without thermal in train,1789880407.7785914
-Missing thermal in test,PASS,0,0 RGB without thermal in test,1789880407.7785933
-Annotation class distribution,INFO,{'person': 42437},Object classes in annotations,1789880410.9623272
+RGB image count (train),PASS,12025,Expected 12025,1790007819.9592075
+RGB image count (test),PASS,3463,Expected 3463,1790007819.9592075
+RGB image count (total),PASS,15488,Expected 15488,1790007819.9592075
+Thermal image count (train),PASS,12025,Expected 12025,1790007819.9592075
+Thermal image count (test),PASS,3463,Expected 3463,1790007819.9592075
+Thermal image count (total),PASS,15488,Expected 15488,1790007819.9592075
+Annotation count,PASS,15488,Expected 15488,1790007819.9592075
+Valid RGB-Thermal pairs (total),PASS,15488,Found 15488 paired records total,1790007822.0174732
+Valid RGB-Thermal pairs (train),PASS,12025,Found 12025 paired records in train,1790007822.0174732
+Valid RGB-Thermal pairs (test),PASS,3463,Found 3463 paired records in test,1790007822.0174732
+Missing thermal images,PASS,0,0 RGB images without thermal,1790007822.0174732
+Missing RGB images,PASS,0,0 thermal images without RGB,1790007822.0174732
+Missing annotations (overall),PASS,0,0 images without annotations,1790007822.0174732
+Duplicate RGB files,PASS,0,Check filename uniqueness within modality,1790007822.0174732
+Duplicate thermal files,PASS,0,Check filename uniqueness within modality,1790007822.0174732
+Duplicate RGB-thermal pairs,PASS,0,Check for duplicate cross-modal pairs,1790007822.0174732
+Corrupt/unreadable images (sampled),PASS,0,No corrupt images found in sample,1790007823.0974011
+RGB dimensions consistent,PASS,"{(1280, 1024)}",Found 1 unique dimensions,1790007823.0974011
+Thermal dimensions consistent,PASS,"{(1280, 1024)}",Found 1 unique dimensions,1790007823.0974011
+RGB image format,PASS,{'JPEG': 1000},Image formats found in RGB set,1790007823.0974011
+Thermal image format,PASS,{'JPEG': 1000},Image formats found in thermal set,1790007823.0974011
+Corrupt images (full scan),PASS,0,"Checked 30976 images, 0 corrupt",1790007830.1643934
+Annotation format,PASS,{'.xml': 15488},Annotation formats: {'.xml': 15488},1790008017.2199283
+Annotations without corresponding image,PASS,0,0 orphan annotations,1790008017.2199283
+Empty annotations (no objects),WARN,2,2 annotations with no objects,1790008017.2199283
+Annotation class labels,INFO,{'person': 42437},Classes found in annotations,1790008017.2199283
+Invalid bounding boxes (xmin>=xmax or ymin>=ymax),FAIL,2,Found 2 invalid bboxes in sample of 3000,1790008017.8844144
+Bounding boxes outside image boundaries,PASS,0,Found 0 out-of-bounds bboxes in sample of 3000,1790008017.8844144
+RGB-Thermal correspondence (train),PASS,12025/12025,All RGB have matching thermal in train,1790008018.2814746
+RGB-Thermal correspondence (test),PASS,3463/3463,All RGB have matching thermal in test,1790008018.2814746
+Train/test filename overlap (RGB),PASS,0,0 overlapping filenames between train and test,1790008018.2814746
+Train/test filename overlap (Thermal),PASS,0,0 overlapping filenames between train and test,1790008018.2814746
+Missing thermal in train,PASS,0,0 RGB without thermal in train,1790008018.2814746
+Missing thermal in test,PASS,0,0 RGB without thermal in test,1790008018.2814746
+Annotation class distribution,INFO,{'person': 42437},Object classes in annotations,1790008020.6842096

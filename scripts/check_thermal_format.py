@@ -4,11 +4,12 @@ from PIL import Image
 import cv2
 import numpy as np
 
+llvip_root = Path(__file__).resolve().parents[1] / 'data' / 'LLVIP'
 test_paths = [
-    r'C:\Users\smallcase\ml project paper\LLVIP\infrared\test\190001.jpg',
-    r'C:\Users\smallcase\ml project paper\LLVIP\infrared\test\190002.jpg',
-    r'C:\Users\smallcase\ml project paper\LLVIP\infrared\train\010001.jpg',
-    r'C:\Users\smallcase\ml project paper\LLVIP\visible\train\010001.jpg',
+    str(llvip_root / 'infrared' / 'test' / '190001.jpg'),
+    str(llvip_root / 'infrared' / 'test' / '190002.jpg'),
+    str(llvip_root / 'infrared' / 'train' / '010001.jpg'),
+    str(llvip_root / 'visible' / 'train' / '010001.jpg'),
 ]
 
 for p in test_paths:

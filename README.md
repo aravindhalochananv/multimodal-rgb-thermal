@@ -260,180 +260,112 @@ Outputs:
 - `outputs/comparison/comparison.json` — Raw results
 - `outputs/comparison/comparison.txt` — Summary report
 
-### 10. Run Inference/Demo (Phase 9)
+### 10. Interactive React Web Studio & Dashboard
 
-```python
-from ultralytics import YOLO
-model = YOLO("outputs/rgb/yolov8n/train/weights/best.pt")
-results = model.predict("path/to/image.jpg")
+Launch the full-stack web application to test models, run 3-way comparisons, and inspect benchmark analytics in an interactive UI:
+
+```bash
+# 1-Click Launch (starts FastAPI server and opens React UI in your browser)
+python run_app.py
+
+# Or on Windows, double-click:
+start_app.bat
 ```
 
-## RGB-Only Baseline (Phase 4A)
+* **Web Studio URL:** `http://127.0.0.1:8000`
+* **API Documentation:** `http://127.0.0.1:8000/docs`
 
-The RGB-only baseline experiment has been completed.
+#### Key Web Studio Capabilities
+1. **Colab Model Selector:** Switch between RGB-Only, Thermal-Only, and 50:50 Multimodal Fusion YOLOv8n models with real-time parameter badge displays.
+2. **Interactive Fusion Ratio Slider ($\alpha$):** Dynamically blend visible and infrared streams from 0% RGB / 100% Thermal up to 100% RGB / 0% Thermal.
+3. **Triple Comparison View:** Run all 3 Colab models simultaneously on paired inputs with side-by-side detection panels, confidence scores, and latency statistics.
+4. **Pre-Loaded Test Scenes & Custom Uploads:** Select from 20 LLVIP test pairs or drag-and-drop custom images.
+5. **Benchmark Analytics:** Interactive table of Precision, Recall, F1, mAP@50, mAP@50:95, and embedded high-resolution training curves.
+6. **Qualitative Gallery:** Walkthrough of challenging nighttime scenes (pedestrians in dark shadows, headlight glare, distance).
 
-### Model
+---
 
-| Parameter | Value |
-|---|---|
-| Model variant | YOLOv8n |
-| Pretrained | Yes (COCO pretrained yolov8n.pt) |
-| Input image size | 320×320 |
-| Batch size | 4 |
-| Device | CPU |
-| Seed | 42 |
+## Experimental Results (10-Epoch GPU Full Evaluation)
 
-### Training Configuration
+All three models were trained for 10 epochs with GPU acceleration on Google Colab and evaluated on the official LLVIP test set (3,463 unseen paired images).
 
-| Parameter | Value |
-|---|---|
-| Epochs (planned) | 50 |
-| Epochs (completed) | 2 |
-| Training time per epoch | ~71-107 min |
-| Total training time | ~2 hours (interrupted by CPU time constraints) |
-| Optimizer | AdamW (default) |
-| Learning rate | 0.01 (lr0) |
+### 3-Way Benchmark Comparison Table
 
-### Dataset Split (RGB only)
+| Modality / Experiment | Precision | Recall | F1-Score | mAP@50 | mAP@50:95 | Inference Time | FPS (CPU) |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **RGB-Only Baseline** | 0.8904 | 0.7870 | 0.8356 | 0.8596 | 0.4692 | 54.07 ms | 18.5 |
+| **Thermal-Only Baseline** | **0.9267** | **0.8418** | **0.8822** | **0.9222** | **0.5658** | 52.15 ms | 19.2 |
+| **50:50 Multimodal Fusion** | 0.9218 | 0.8295 | 0.8732 | 0.9150 | 0.5505 | **38.19 ms** | **26.2** |
 
-| Split | Count |
-|---|---|
-| Train | 11,523 |
-| Validation | 500 |
-| Test | 3,463 |
-| Total annotations | 15,488 |
-| Converted (train+val) | 12,023 |
-| Converted (test) | 3,463 |
-| Skipped (empty annotations) | 2 |
-| Skipped (invalid bbox) | 5 |
-| Classes | 1 (person) |
+### Key Experimental Insights
+* **Thermal Superiority:** Thermal-only outperforms RGB-only by **+6.26% mAP@50** and **+9.66% mAP@50:95**, demonstrating that infrared body heat radiation penetrates nighttime shadows and headlight glare far more effectively than visible light.
+* **Multimodal Advantage:** 50:50 Multimodal Fusion outperforms RGB-only by **+5.54% mAP@50** and **+8.13% mAP@50:95**, significantly reducing false negatives while maintaining high FPS (26.2 FPS on CPU).
+* **Fusion Dynamics:** Naive 50:50 pixel fusion slightly attenuates thermal peak contrast (-0.72% vs. pure thermal) due to blending with dark RGB noise. This confirms that while pixel fusion greatly aids RGB visibility, advanced feature-level cross-attention is recommended for ultimate accuracy.
 
-### Test Set Metrics
+---
 
-| Metric | Value |
-|---|---|
-| Precision | 0.873 |
-| Recall | 0.703 |
-| F1-score | 0.779 |
-| mAP@50 | 0.684 |
-| mAP@50:95 | 0.338 |
-| Inference time (avg) | 50.95 ms/image |
+## RGB-Only Baseline (Phase 4)
 
-### Results Location
+* **Architecture:** YOLOv8n (3.0M parameters)
+* **Training:** 10 epochs on NVIDIA GPU, batch size 16, image size 320x320
+* **Test Metrics:** Precision: 0.8904 | Recall: 0.7870 | F1: 0.8356 | mAP@50: 0.8596 | mAP@50:95: 0.4692
+* **Artifacts:** `outputs/rgb/yolov8n/train/weights/best.pt`, `outputs/rgb/predictions/`
 
-| File | Description |
-|---|---|
-| `outputs/rgb/rgb_results.json` | Structured experiment results |
-| `outputs/rgb/rgb_results.csv` | CSV results |
-| `outputs/rgb/yolov8n/test_results.json` | Detailed evaluation metrics |
-| `outputs/rgb/yolov8n/test_results.csv` | Detailed evaluation CSV |
-| `outputs/rgb/yolov8n/train/results.csv` | Per-epoch training metrics |
-| `outputs/rgb/yolov8n/train/weights/best.pt` | Best model weights |
-| `outputs/rgb/yolov8n/train/weights/last.pt` | Final model weights |
-| `outputs/rgb/predictions/` | Qualitative predictions (10 test images) |
+## Thermal-Only Baseline (Phase 5)
 
-## Thermal-Only Baseline (Phase 4B)
+* **Architecture:** YOLOv8n (3.0M parameters)
+* **Training:** 10 epochs on NVIDIA GPU, batch size 16, image size 320x320
+* **Test Metrics:** Precision: 0.9267 | Recall: 0.8418 | F1: 0.8822 | mAP@50: 0.9222 | mAP@50:95: 0.5658
+* **Artifacts:** `outputs/thermal/yolov8n/train/weights/best.pt`, `outputs/thermal/predictions/`
 
-The thermal-only baseline experiment has been completed.
+## Multimodal RGB-Thermal Fusion (Phase 6)
 
-### Model
+* **Architecture:** YOLOv8n with 50:50 weighted pixel fusion ($I_{\text{fused}} = 0.5 \cdot I_{\text{rgb}} + 0.5 \cdot I_{\text{thermal}}$)
+* **Extended Architectures:** `src/models/fusion_model.py` provides `LateFusionEnsemble` and `EarlyFusionYOLO`
+* **Training:** 10 epochs on NVIDIA GPU, batch size 16, image size 320x320
+* **Test Metrics:** Precision: 0.9218 | Recall: 0.8295 | F1: 0.8732 | mAP@50: 0.9150 | mAP@50:95: 0.5505
+* **Artifacts:** `outputs/multimodal/yolov8n/train/weights/best.pt`, `outputs/multimodal/predictions/`
 
-| Parameter | Value |
-|---|---|
-| Model variant | YOLOv8n |
-| Pretrained | Yes (COCO pretrained yolov8n.pt) |
-| Input image size | 320×320 |
-| Batch size | 4 |
-| Device | CPU |
-| Seed | 42 |
+## Comparison & Visualizations (Phase 8)
 
-### Training Configuration
+* `outputs/comparison/comparison.csv`: Summary metrics table
+* `outputs/comparison/metrics_comparison_bar.png`: Multi-metric bar plot
+* `outputs/comparison/map_comparison.png`: mAP@50 and mAP@50:95 comparison plot
+* `outputs/comparison/training_curves_comparison.png`: 10-epoch validation curves across all modalities
 
-| Parameter | Value |
-|---|---|
-| Epochs | 2 |
-| Training time | 1.75 hours |
-| Optimizer | AdamW (default) |
-| Learning rate | 0.01 (lr0) |
+## Inference & Qualitative Detections (Phase 9)
 
-### Preprocessing
+Run inference or generate 3-way side-by-side comparative detection panels:
 
-Thermal images are stored as 3-channel JPEG files where all three channels are identical (effectively grayscale data encoded as RGB). No channel conversion was needed — YOLOv8n accepts 3-channel input and the images are already in that format. No RGB information was introduced.
+```bash
+# 3-Way Comparative Detection Panel (RGB vs Thermal vs Fusion)
+python -m src.inference.predict --compare --rgb data/LLVIP/visible/test/190001.jpg --thermal data/LLVIP/infrared/test/190001.jpg
 
-### Dataset Split (Thermal only)
+# Multimodal Fusion Prediction
+python -m src.inference.predict --modality multimodal --rgb data/LLVIP/visible/test/190001.jpg --thermal data/LLVIP/infrared/test/190001.jpg
+```
 
-| Split | Count |
-|---|---|
-| Train | 11,523 |
-| Validation | 500 |
-| Test | 3,463 |
-| Total annotations | 15,488 |
-| Converted (train+val) | 12,023 |
-| Converted (test) | 3,463 |
-| Skipped (empty annotations) | 2 |
-| Skipped (invalid bbox) | 5 |
-| Classes | 1 (person) |
+Comparative panels are saved to `outputs/comparison/predictions/`.
 
-### Test Set Metrics
-
-| Metric | Value |
-|---|---|
-| Precision | 0.913 |
-| Recall | 0.774 |
-| F1-score | 0.837 |
-| mAP@50 | 0.803 |
-| mAP@50:95 | 0.480 |
-| Inference time (avg) | 47.44 ms/image |
-
-### Results Location
-
-| File | Description |
-|---|---|
-| `outputs/thermal/thermal_results.json` | Structured experiment results |
-| `outputs/thermal/thermal_results.csv` | CSV results |
-| `outputs/thermal/yolov8n/test_results.json` | Detailed evaluation metrics |
-| `outputs/thermal/yolov8n/test_results.csv` | Detailed evaluation CSV |
-| `outputs/thermal/yolov8n/train/results.csv` | Per-epoch training metrics |
-| `outputs/thermal/yolov8n/train/weights/best.pt` | Best model weights |
-| `outputs/thermal/predictions/` | Qualitative predictions (10 test images) |
-
-### Comparison with RGB-only (descriptive only)
-
-| Metric | RGB-only | Thermal-only | Delta |
-|---|---|---|---|
-| Precision | 0.873 | 0.913 | +0.040 |
-| Recall | 0.703 | 0.774 | +0.071 |
-| F1-score | 0.779 | 0.837 | +0.059 |
-| mAP@50 | 0.684 | 0.803 | +0.118 |
-| mAP@50:95 | 0.338 | 0.480 | +0.141 |
-| Inference time (ms) | 50.95 | 47.44 | -3.51 |
-
-**Note**: Comparison is descriptive only. No conclusion about modality superiority is drawn.
+---
 
 ## Dataset Audit Results (Phase 3)
 
-The dataset audit has been completed. Results are in `outputs/dataset_audit/`:
-
-| File | Description |
-|---|---|
-| `dataset_audit.json` | Full structured audit results |
-| `dataset_audit.csv` | Check-by-check results |
-| `dataset_audit.txt` | Human-readable report |
-| `pairing_report.csv` | Pairing verification summary |
-
-**Summary**: 35 checks — 31 PASS, 1 FAIL (2 zero-width bounding boxes), 1 WARN (2 empty annotations), 2 INFO.
+The dataset audit was verified via `src/data/audit.py` and outputs are in `outputs/dataset_audit/`:
+* **Total Checks:** 35 — 31 PASS, 1 FAIL (zero-width bboxes skipped in conversion), 1 WARN, 2 INFO.
+* **Pairs:** 15,488 verified pairs (100% matched, zero leakage between 12,025 train and 3,463 test).
 
 ## Phases
 
 1. **Phase 1** — Environment and project structure ✅
 2. **Phase 2** — LLVIP dataset setup and organization ✅
 3. **Phase 3** — Dataset audit and RGB/thermal pairing verification ✅
-4. **Phase 4** — RGB-only baseline (Phase 4A & 4B complete; training interrupted at 2 epochs due to CPU constraints)
-5. **Phase 5** — Thermal-only baseline (Phase 4B complete)
-6. **Phase 6** — RGB + thermal multimodal fusion
-7. **Phase 7** — Evaluation
-8. **Phase 8** — Comparative analysis and visualization
-9. **Phase 9** — Final inference/demo
+4. **Phase 4** — RGB-only baseline training & evaluation ✅
+5. **Phase 5** — Thermal-only baseline training & evaluation ✅
+6. **Phase 6** — RGB + Thermal multimodal fusion model ✅
+7. **Phase 7** — Comprehensive test set evaluation ✅
+8. **Phase 8** — Comparative analysis and visualization ✅
+9. **Phase 9** — Final inference CLI and qualitative demo panels ✅
 
 ## Requirements
 
